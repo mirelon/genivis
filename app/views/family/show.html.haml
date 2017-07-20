@@ -1,0 +1,13 @@
+#wrapper
+  .parents{style: 'float: left; background-color: #ffdfbf;'}
+    - @family.parents.each do |parent_hash|
+      = render partial: 'node', locals: {node: Node.new(parent_hash)}
+  .partners{style: 'float: left; clear: left; background-color: #cfefdf;'}
+    - ([@family.focus] + @family.partners).each do |partner_hash|
+      = render partial: 'node', locals: {node: Node.new(partner_hash)}
+  .siblings{style: 'float: left; background-color: #efdfdf;'}
+    - @family.siblings.each do |sibling_hash|
+      = render partial: 'node', locals: {node: Node.new(sibling_hash)}
+  .children{style: 'float: left; clear: left; background-color: #bfffff;'}
+    - @family.children.each do |child_hash|
+      = render partial: 'node', locals: {node: Node.new(child_hash)}
