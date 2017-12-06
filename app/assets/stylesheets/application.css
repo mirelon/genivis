@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+.male {
+  background-color: #ddddff;
+}
+.female {
+  background-color: #ffdddd;
+}

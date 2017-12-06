@@ -9,4 +9,8 @@ class Node
     @id = hash['id'].remove 'profile-'
   end
 
+  def get_data
+    token
+  end
+
 end
