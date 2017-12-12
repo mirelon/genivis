@@ -57,6 +57,10 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    gon (6.2.0)
+      actionpack (>= 3.0)
+      multi_json
+      request_store (>= 1.0)
     haml (5.0.1)
       temple (>= 0.8.0)
       tilt
@@ -136,6 +140,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    request_store (1.3.2)
     ruby_parser (3.9.0)
       sexp_processor (~> 4.1)
     sass (3.5.1)
@@ -188,6 +193,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  gon (>= 6.1.0)
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -204,4 +210,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.2
+   1.15.4

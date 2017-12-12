@@ -20,3 +20,17 @@
 .female {
   background-color: #ffdddd;
 }
+.node {
+  border: 1px solid grey;
+  white-space: nowrap;
+  padding: 3px;
+  text-decoration: none;
+  color: black;
+}
+.node p {
+  margin: 6px;
+  font-family: sans-serif;
+}
+.deceased {
+  color: grey;
+}
