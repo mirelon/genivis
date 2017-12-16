@@ -58,10 +58,20 @@ class Family
   end
 
   def focus
-    node(focus_id)
+    puts 'Merge'
+    puts family['focus']
+    puts 'with'
+    puts node(focus_id)
+    puts 'Final:'
+    puts node(focus_id).merge(family['focus'])
+    node(focus_id).merge(family['focus'])
   end
 
   def focus_id
     family['focus']['id']
+  end
+
+  def self.update_interval
+    10.days
   end
 end
