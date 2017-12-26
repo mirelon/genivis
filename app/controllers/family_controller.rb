@@ -38,7 +38,11 @@ class FamilyController < AuthorizedController
         ]
       else
         children = [
-          Node.from_hash(family.parents[0]).to_treant_node
+          Node.from_hash(family.parents[0]).to_treant_node,
+          {
+              pseudo: true,
+              children: children
+          }
         ]
       end
     end
