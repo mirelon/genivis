@@ -14,34 +14,34 @@ class FamilyController < AuthorizedController
     siblings = family.siblings.map do |sibling|
       Node.from_hash(sibling)
     end
-    children = [
+    node_structure = if family.children.count > 0 || partners.count > 0
+                 [{
+                      pseudo: true,
+                      children: family.children.map {|ch| Node.from_hash(ch).to_treant_node}
+                  }]
+               else
+                 []
+               end
+    node_structure = [
       focus.to_treant_node
-    ] + partners.map do |partner|
-      [
-        {
-          pseudo: true,
-          children: family.children.map{|ch| Node.from_hash(ch).to_treant_node}
-        },
-        partner.to_treant_node
-      ]
-    end.flatten + siblings.map(&:to_treant_node)
+    ] + node_structure + partners.map(&:to_treant_node).map{|i| [i,{pseudo: true}]}.flatten[0..-2] + siblings.map(&:to_treant_node)
 
     if family.parents.count > 0
       if family.parents.count > 1
-        children = [
+        node_structure = [
           Node.from_hash(family.parents[0]).to_treant_node,
           {
             pseudo: true,
-            children: children
+            children: node_structure
           },
           Node.from_hash(family.parents[1]).to_treant_node
         ]
       else
-        children = [
+        node_structure = [
           Node.from_hash(family.parents[0]).to_treant_node,
           {
               pseudo: true,
-              children: children
+              children: node_structure
           }
         ]
       end
@@ -51,7 +51,7 @@ class FamilyController < AuthorizedController
         container: "#tree-simple"
       },      
       nodeStructure: {
-        children: children
+        children: node_structure
       }
     }
   end

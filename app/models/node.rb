@@ -47,7 +47,7 @@ class Node < ApplicationRecord
   def self.from_hash(hash)
     geni_id = hash['id'].remove 'profile-'
     if geni_id
-      nodes = Node.where(geni_id: geni_id)
+      nodes = self.where(geni_id: geni_id)
       if nodes.size > 1
         puts "Consistency error: #{geni_id} has #{nodes.size} nodes in DB"
         nodes.first
@@ -59,7 +59,7 @@ class Node < ApplicationRecord
         end
         node
       else
-        node = Node.new
+        node = self.new
         node.assign_from_hash hash
         node.save
         node
